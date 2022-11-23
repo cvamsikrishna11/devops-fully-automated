@@ -4,7 +4,6 @@ def COLOR_MAP = [
 ]
 
 
-
 pipeline {
     agent any
     
@@ -14,10 +13,10 @@ pipeline {
         
     }
     
-    // tools{
-    //     maven 'localMaven'
-    //     jdk 'localJdk'
-    // }
+    tools{
+        maven 'localMaven'
+        jdk 'localJdk'
+    }
     
 
     stages {
@@ -79,8 +78,8 @@ pipeline {
             sh """
            mvn sonar:sonar \
             -Dsonar.projectKey=maven \
-            -Dsonar.host.url=http://34.232.109.247:9000 \
-            -Dsonar.login=9bb799d032fda12f2234c7686dd30b8459659aa9
+            -Dsonar.host.url=http://:9000 \
+            -Dsonar.login=6456469998797987987987
             
             """
             }
