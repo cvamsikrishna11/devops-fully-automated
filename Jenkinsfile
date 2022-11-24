@@ -122,7 +122,7 @@ pipeline {
         sh 'ls'
         sh 'cp ansible/aws_ec2.yml /opt/ansible/inventory/'
         // sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
-        sh "ansible-playbook -i /opt/ansible/inventory/aws_ec2.yaml /var/lib/jenkins/workspace/testing/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_dev workspace_path=/var/lib/jenkins/workspace/testing\""
+        sh "ansible-playbook -i /opt/ansible/inventory/aws_ec2.yaml ${WORKSPACE}/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_dev workspace_path=$WORKSPACE\""
       }
      }
      
@@ -134,7 +134,7 @@ pipeline {
       steps {
         sh 'ls'
         // sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
-        sh "ansible-playbook -i /opt/ansible/inventory/aws_ec2.yaml /var/lib/jenkins/workspace/testing/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_stage workspace_path=/var/lib/jenkins/workspace/testing\""
+        sh "ansible-playbook -i /opt/ansible/inventory/aws_ec2.yaml ${WORKSPACE}/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_stage workspace_path=$WORKSPACE\""
         
       }
      }
@@ -156,7 +156,7 @@ pipeline {
       steps {
         sh 'ls'
         // sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
-        sh "ansible-playbook -i /opt/ansible/inventory/aws_ec2.yaml /var/lib/jenkins/workspace/testing/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_prod workspace_path=/var/lib/jenkins/workspace/testing\""
+        sh "ansible-playbook -i /opt/ansible/inventory/aws_ec2.yaml ${WORKSPACE}/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_prod workspace_path=$WORKSPACE\""
       }
      }
     
