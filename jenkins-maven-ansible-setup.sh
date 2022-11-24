@@ -23,6 +23,8 @@ sudo yum install git -y
 
 # Installing Ansible
 sudo amazon-linux-extras install ansible2 -y
+sudo yum install python-pip
+pip install boto3
 sudo useradd ansadmin
 sudo echo ansadmin:ansadmin | chpasswd
 sudo sed -i "s/.*#host_key_checking = False/host_key_checking = False/g" /etc/ansible/ansible.cfg
