@@ -4,6 +4,7 @@ def COLOR_MAP = [
 ]
 
 
+
 pipeline {
     agent any
     
@@ -23,8 +24,9 @@ pipeline {
         stage('Git checkout') {
             steps {
                 echo 'Cloning the application code...'
-                git branch: 'main', url: 'https://github.com/cvamsikrishna11/devops-fully-automated.git'
-                sh 'mvn --version'
+                git branch: 'main', url: 'https://github.com/cvamsikrishna11/devops-fully-automated.git'                
+                sh 'ls'
+                
                 
             }
         }
@@ -76,10 +78,10 @@ pipeline {
             withSonarQubeEnv('SonarQube') {
             
             sh """
-           mvn sonar:sonar \
+          mvn sonar:sonar \
             -Dsonar.projectKey=maven \
-            -Dsonar.host.url=http://:9000 \
-            -Dsonar.login=6456469998797987987987
+            -Dsonar.host.url=http://172.31.14.9:9000 \
+            -Dsonar.login=9bb799d032fda12f2234c7686dd30b8459659aa9
             
             """
             }
@@ -92,7 +94,7 @@ pipeline {
     
       steps{
            
-       waitForQualityGate abortPipeline: true
+      waitForQualityGate abortPipeline: true
            
          }
         
@@ -103,8 +105,8 @@ pipeline {
     stage("Upload artifact to Nexus"){
     
       steps{
-           
-       sh 'mvn clean deploy -DskipTests'
+            sh 'cp settings.xml /var/lib/jenkins/.m2'
+            sh 'mvn clean deploy -DskipTests'
            
          }
         
@@ -118,7 +120,9 @@ pipeline {
       }
       steps {
         sh 'ls'
-        sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
+        sh 'cp ansible/aws_ec2.yml /opt/ansible/inventory/'
+        // sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
+        sh "ansible-playbook -i /opt/ansible/inventory/aws_ec2.yaml /var/lib/jenkins/workspace/testing/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_dev workspace_path=/var/lib/jenkins/workspace/testing\""
       }
      }
      
@@ -129,7 +133,9 @@ pipeline {
       }
       steps {
         sh 'ls'
-        sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
+        // sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
+        sh "ansible-playbook -i /opt/ansible/inventory/aws_ec2.yaml /var/lib/jenkins/workspace/testing/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_stage workspace_path=/var/lib/jenkins/workspace/testing\""
+        
       }
      }
      
@@ -149,7 +155,8 @@ pipeline {
       }
       steps {
         sh 'ls'
-        sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
+        // sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
+        sh "ansible-playbook -i /opt/ansible/inventory/aws_ec2.yaml /var/lib/jenkins/workspace/testing/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_prod workspace_path=/var/lib/jenkins/workspace/testing\""
       }
      }
     
