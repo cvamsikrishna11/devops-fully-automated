@@ -22,7 +22,7 @@
 <div class="header">
   <h1>Hello JJ Tech Family !!!</h1>
   <p>This Java Web Application Was Deployed Using CI/CD</p>
-  <h1>V5</h1>
+  <h1>V6</h1>
   
 </div>
 </body>
