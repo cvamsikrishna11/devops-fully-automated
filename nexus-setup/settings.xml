@@ -9,8 +9,8 @@
 <servers>
    <server>
         <id>nexus</id>
-        <username>admin</username>
-        <password>admin</password>
+        <username></username>
+        <password></password>
     </server>
 </servers>
 
