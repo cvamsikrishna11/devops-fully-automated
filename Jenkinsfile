@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Cloning the application code...'
                 git branch: 'main', url: 'https://github.com/cvamsikrishna11/devops-fully-automated.git'                
-                sh 'ls'
+               
                 
                 
             }
@@ -118,11 +118,12 @@ pipeline {
       environment {
         HOSTS = "dev"
       }
-      steps {
-        sh 'ls'
-        // sh 'cp ansible-setup/aws_ec2.yml /opt/ansible/inventory/'
-        // sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
-        sh "ansible-playbook -i ${WORKSPACE}/ansible-setup/aws_ec2.yaml ${WORKSPACE}/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_dev workspace_path=$WORKSPACE\""
+      steps {       
+           withCredentials([usernamePassword(credentialsId: 'ansible-deploy-server-credentials', passwordVariable: 'PASSWORD', usernameVariable: 'USER_NAME')]) {
+                                      
+                    sh "ansible-playbook -i ${WORKSPACE}/ansible-setup/aws_ec2.yaml ${WORKSPACE}/deploy.yaml --extra-vars \"ansible_user=$USER_NAME ansible_password=$PASSWORD hosts=tag_Environment_$HOSTS workspace_path=$WORKSPACE\""
+                }
+        
       }
      }
      
@@ -131,10 +132,11 @@ pipeline {
       environment {
         HOSTS = "stage"
       }
-      steps {
-        sh 'ls'
-        // sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
-        sh "ansible-playbook -i ${WORKSPACE}/ansible-setup/aws_ec2.yaml ${WORKSPACE}/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_stage workspace_path=$WORKSPACE\""
+      steps {       
+           withCredentials([usernamePassword(credentialsId: 'ansible-deploy-server-credentials', passwordVariable: 'PASSWORD', usernameVariable: 'USER_NAME')]) {
+                                      
+                    sh "ansible-playbook -i ${WORKSPACE}/ansible-setup/aws_ec2.yaml ${WORKSPACE}/deploy.yaml --extra-vars \"ansible_user=$USER_NAME ansible_password=$PASSWORD hosts=tag_Environment_$HOSTS workspace_path=$WORKSPACE\""
+                }
         
       }
      }
@@ -153,10 +155,12 @@ pipeline {
       environment {
         HOSTS = "prod"
       }
-      steps {
-        sh 'ls'
-        // sh "ansible-playbook ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
-        sh "ansible-playbook -i ${WORKSPACE}/ansible-setup/aws_ec2.yaml ${WORKSPACE}/deploy.yaml --extra-vars \"ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_prod workspace_path=$WORKSPACE\""
+      steps {       
+           withCredentials([usernamePassword(credentialsId: 'ansible-deploy-server-credentials', passwordVariable: 'PASSWORD', usernameVariable: 'USER_NAME')]) {
+                                      
+                    sh "ansible-playbook -i ${WORKSPACE}/ansible-setup/aws_ec2.yaml ${WORKSPACE}/deploy.yaml --extra-vars \"ansible_user=$USER_NAME ansible_password=$PASSWORD hosts=tag_Environment_$HOSTS workspace_path=$WORKSPACE\""
+                }
+        
       }
      }
     
