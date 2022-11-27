@@ -115,8 +115,49 @@
         * Name: **localMaven**
         * Version: Keep the default version as it is 
 
+5)  #### Credentials setup(SonarQube, Nexus, Ansible, Slack):
+    - Click on Manage Jenkins --> Manage Credentials --> Global credentials (unrestricted) --> Add Credentials
+
+        1)  ###### SonarQube secret token (sonarqube-token)
+            - Kind: Secret text
+                    Generating SonarQube secret token
+                    - Login to your SonarQube server (http://sonarserver-public-ip:9000, with the credentials username: **admin** & password: **admin**)
+                    - Click on profile --> My Account --> Security --> Tokens
+                    - Generate Tokens: **jenkins-token**
+                    - Click on **Generate**
+                    - Copy the token
+            - Secret: Fill the secret token value that we have created on the SonarQube server
+            - ID: sonarqube-token
+            - Description: sonarqube-token
+            - Click on Create
+
+        2)  ###### Nexus username & password (nexus-credentials)
+            - Kind: Username with password                  
+            - Username: admin
+            - Enable Treat username as secret
+            - Password: admin
+            - ID: nexus-credentials
+            - Description: nexus-credentials
+            - Click on Create    
+
+        3)  ###### Ansible deployment server username & password (ansible-deploy-server-credentials)
+            - Kind: Username with password                  
+            - Username: ansadmin
+            - Enable Treat username as secret
+            - Password: ansadmin
+            - ID: ansible-deploy-server-credentials
+            - Description: ansible-deploy-server-credentials
+            - Click on Create    
+
+        4)  ###### Slack secret token (slack-token)
+            - Kind: Secret text            
+            - Secret: 3jrfd3GjdMac0dgcxJwcOgQU
+            - ID: slack-token
+            - Description: slack-token
+            - Click on Create                 
+
     
-5)  #### Configure system:
+6)  #### Configure system:
     - Click on Manage Jenkins --> Global Tool Configuration
 
         1)  - Go to section SonarQube servers --> **Add SonarQube **
@@ -128,36 +169,18 @@
 
         3)  - Go to section Slack
             - Workspace: **devops-fully-automated**
-            - Credentials --> Add --> kind (Secret text)
-            - Secret: **3jrfd3GjdMac0dgcxJwcOgQU**
-            - ID: **slack-token**
-            - Description: **slack-token**           
+            - Credentials: select the slack-token credentials (created above) from the drop-down    
 
 ### SonarQube setup
 
 Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:9000
-    
-1)  #### Token generation:
-    - Login to your SonarQube server with the credentials username: **admin** & password: **admin**
-    - Click on profile --> My Account --> Security --> Tokens
-    - Generate Tokens: **jenkins-token**
-    - Click on **Generate**
-    - **Note: Copy the token and save it as a backup somewhere**
-    - Now access jenkins --> Manage jenkins --> Manage Credentials
-    - Create a new secret by clicking on --> global drop-down --> Add credentials 
-    - Kind: Secret text
-    - Secret: Fill the secret token value that we have created on the SonarQube server
-    - ID: sonarqube-token
-    - Description: sonarqube-token
-    - Click on Create
 
-2)  #### Jenkins webhook in SonarQube:
+1)  #### Jenkins webhook in SonarQube:
     - Login into SonarQube
     - Go to Administration --> Configuration --> Webhooks --> Click on Create
     - Name: Jenkins-Webhook
     - URL: http://REPLACE-WITH-JENKINS-PRIVATE-IP:8080/sonarqube-webhook/           (replace SonarQube privat IP here)
     - Click on Create
-
      
 
 
