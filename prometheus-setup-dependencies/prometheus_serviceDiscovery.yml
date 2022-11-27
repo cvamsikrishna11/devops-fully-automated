@@ -4,9 +4,12 @@ global:
     monitor: 'prometheus'
 
 scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+    - targets: ['localhost:9090']
   - job_name: 'node'
     ec2_sd_configs:
-      - region: us-east-2
-        access_key: yourkey
-        secret_key: yourkey
+      - region: us-east-1        
         port: 9100
+    
+        
