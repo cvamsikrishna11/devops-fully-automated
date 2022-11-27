@@ -10,16 +10,17 @@
     - Clone your newly created repo to your local
 
 2) Jenkins/Maven/Ansible
-    - Create an Amazon Linux 2 VM instance and call it "jenkins-maven-ansible"
+    - Create an **Amazon Linux 2 VM** instance and call it "jenkins-maven-ansible"
     - Instance type: t2.medium
     - Security Group (Open): 8080, 9100 and 22 to 0.0.0.0/0
     - Key pair: Select or create a new keypair
     - **Attach Jenkins server with IAM role having "AdministratorAccess"**
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/jenkins-maven-ansible-setup.sh
     - Launch Instance
+    - After launching this Jenkins server, attach a tag as **Key=Application, value=jenkins**
 
 3) SonarQube
-    - Create an Create an Ubuntu 20.04 VM instance and call it "SonarQube"
+    - Create an Create an **Ubuntu 20.04** VM instance and call it "SonarQube"
     - Instance type: t2.medium
     - Security Group (Open): 9000, 9100 and 22 to 0.0.0.0/0
     - Key pair: Select or create a new keypair
@@ -27,7 +28,7 @@
     - Launch Instance
 
 4) Nexus
-    - Create an Amazon Linux 2 VM instance and call it "Nexus"
+    - Create an **Amazon Linux 2** VM instance and call it "Nexus"
     - Instance type: t2.medium
     - Security Group (Open): 8081, 9100 and 22 to 0.0.0.0/0
     - Key pair: Select or create a new keypair
@@ -35,12 +36,13 @@
     - Launch Instance
 
 5) EC2 (Dev/Stage/Prod)
-    - Create 6 Amazon Linux 2 VM instances and tag them as Environment=dev/stage/prod
+    - Create 6 **Amazon Linux 2** VM instances
     - Instance type: t2.micro
     - Security Group (Open): 8080, 9100 and 22 to 0.0.0.0/0
     - Key pair: Select or create a new keypair
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/deployment-servers-setup.sh
     - Launch Instance
+    - After launching this Jenkins servers, attach a tag as **Key=Environment, value=dev/stage/prod** ( out of 6, each 2 instances could be tagges as one env)
 
 6) Prometheus
     - Create Amazon Linux 2 VM instance and call it "Prometheus"
@@ -52,7 +54,7 @@
     - Launch Instance
 
 7) Grafana
-    - Create an Ubuntu 20.04 VM instance and call it "Grafana"
+    - Create an **Ubuntu 20.04** VM instance and call it "Grafana"
     - Instance type: t2.micro
     - Security Group (Open): 3000 and 22 to 0.0.0.0/0
     - Key pair: Select or create a new keypair
@@ -62,6 +64,41 @@
 8) Slack 
     - **Join the slack channel https://join.slack.com/t/slack-wcl4742/shared_invite/zt-1kid01o3n-W47OUTHBd2ZZpSzGnow1Wg**
     - **Join into the channel "#team-devops"**
+
+### Jenkins setup
+1) Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:8080
+    - Login to your Jenkins instance using your Shell (GitBash or your Mac Terminal)
+    - Copy the Path from the Jenkins UI to get the Administrator Password
+        - Run: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+        - Copy the password and login to Jenkins
+    - Plugins: Choose Install Suggested Plugings 
+    - Provide 
+        - Username: **admin**
+        - Password: **admin**
+        - Name and Email can also be admin. You can use `admin` all, as its a poc.
+    - Continue and Start using Jenkins
+
+2)  ###### Plugin installations:
+        - Click on "Manage Jenkins"
+        - Click on "Plugin Manager"
+        - Click "Available"
+        - Search and Install the following Plugings "Install Without Restart"
+            - **SonnarQube Scanner**
+            - **Prometheus metrics**
+            - **CloudBees Disk Usage Simple**
+            - **Slack Notification**
+        - Once all plugins are installed, select **Restart Jenkins when installation is complete and no jobs are running**
+    ###### Global tools configuration:
+        - Click on Manage Jenkins --> Global Tool Configuration
+        - **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> Extract *.zip/*.tar.gz --> Fill the below values
+            * Name: **localJdk**
+            * Download URL for binary archive: **https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz**
+            * Subdirectory of extracted archive: **jdk-11.0.1**
+        - **Maven** --> Add Maven --> Make sure **Install automatically** is enabled --> Install from Apache --> Fill the below values
+            * Name: **localMaven**
+            * Version: Keep the default version as it is
+            
+
 
 9) Open a New Tab on your browser for Grafana also if you've not done so already. 
     - Copy your Grafana Instance Public IP and put on the browser with port 3000 e.g "GrafanaPublic:3000"
@@ -96,28 +133,6 @@
     - Add the changes to git, commit and push to GitHub
     - Confirm the changes reflects on GitHub
 
-11) Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:8080
-    - Login to your Jenkins instance using your Shell (GitBash or your Mac Terminal)
-    - Copy the Path from the Jenkins UI to get the Administrator Password
-        - Run: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
-        - Copy the password and login to Jenkins
-    - Plugins: Choose Install Suggested Plugings 
-    - Provide 
-        - Username: admin
-        - Password: admin
-        - Name and Email can also be admin. You can use `admin` all through as we
-    - Continue and Start using Jenkins
 
-12) Once on the Jenkins Dashboard
-    - Click on "Manage Jenkins"
-    - Click on "Plugin Manager"
-    - Click "Available"
-    - Search and Install the following Plugings "Install Without Restart"
-        - SonnarQube Scanner
-        - Maven Integration
-        - Pipeline Maven Integration
-        - Maven Release Plug-In
-        - Slack Notification
-    - Install all plugings without restart 
 
 13) Confirm and make test your installations/setups  
