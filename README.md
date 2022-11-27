@@ -89,6 +89,31 @@
         - **CloudBees Disk Usage Simple**
         - **Slack Notification**
     - Once all plugins are installed, select **Restart Jenkins when installation is complete and no jobs are running**
+
+
+    ###### Pipeline creation
+    - Click on **New Item**
+    - Enter an item name: **app-cicd-pipeline** & select the category as **Pipeline**
+    - Now scroll-down and in the Pipeline section --> Definition --> Select Pipeline script from SCM
+    - SCM: **Git**
+    - Repositories
+        - Repository URL: FILL YOUR OWN REPO URL (that we created by importing in the first step)
+        - Branch Specifier (blank for 'any'): */main
+        - Script Path: Jenkinsfile
+    - Save
+
+
+    ###### Global tools configuration:
+    - Click on Manage Jenkins --> Global Tool Configuration
+    - **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> Extract *.zip/*.tar.gz --> Fill the below values
+        * Name: **localJdk**
+        * Download URL for binary archive: **https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz**
+        * Subdirectory of extracted archive: **jdk-11.0.1**
+    - **Maven** --> Add Maven --> Make sure **Install automatically** is enabled --> Install from Apache --> Fill the below values
+        * Name: **localMaven**
+        * Version: Keep the default version as it is
+        
+    
     ###### Global tools configuration:
     - Click on Manage Jenkins --> Global Tool Configuration
     - **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> Extract *.zip/*.tar.gz --> Fill the below values
