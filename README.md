@@ -189,7 +189,7 @@ Copy your Jenkins Public IP Address and paste on the browser = http:://NexusServ
 
 1)  #### Setting up password:
     - SSH into Nexus server
-    - Execute `sudo cat /opt/nexus/sonatype-work/nexus3/admin.password`'
+    - Execute `sudo cat /opt/nexus/sonatype-work/nexus3/admin.password`
     - Copy the default password
     - Now login into Nexus console with the username: admin & password (copied from the SSH above)
     - Once signed in fill the below details in the setup wizard
@@ -198,61 +198,46 @@ Copy your Jenkins Public IP Address and paste on the browser = http:://NexusServ
     - Configure anonymus access: Select Disable anonymus access
     - Click on Finish
 
-1)  #### Creating a new maven repository for project:
-    - SSH into Nexus server
-    - Execute `sudo cat /opt/nexus/sonatype-work/nexus3/admin.password`'
-    - Copy the default password
-    - Now login into Nexus console with the username: admin & password (copied from the SSH above)
-    - Once signed in fill the below details in the setup wizard
-    - New password: admin
-    - Confirm password: admin
-    - Configure anonymus access: Select Disable anonymus access
-    - Click on Finish
+2)  #### Creating a new maven repository for project:
+    - Once login to the Nexus server, click on Settings icon --> Repository --> Repositories
+    - Click on Create repository
+    - Select maven2(group)
+    - Name: maven_project
+    - Scroll-down to Group section & select all the available repositories (maven-snapshots, maven-public, maven-releases, maven-central) as members
+    Hint: You can select one repo at a time and click on > symbol to add the repo as group member.
+    - Once all the repositories are added to the group, click on Create repository
 
 
+### Ansible setup 
 
+Nothing to be done for the Ansible setup as the jenkins server already created with the ansible instllation and the deployment servers have the required ansadmin users for the deployment.
 
+### Prometheus setup
 
+Copy your Jenkins Public IP Address and paste on the browser = http:://PrometheusServerExternalIP:9090
 
+Note: Prometheus setup is also full automated, so just verifying the health of servers are required
 
+1)  #### Checking targets health:
+    - Once prometheus accessed --> Status --> Targets (for the health checkup)
+    - Once prometheus accessed --> Status --> Configuration (for the config file verification)
+   
 
+ 
 
+### Grafana setup
 
+Copy your Jenkins Public IP Address and paste on the browser = http:://GrafanaServerExternalIP:3000
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-9) Open a New Tab on your browser for Grafana also if you've not done so already. 
-    - Copy your Grafana Instance Public IP and put on the browser with port 3000 e.g "GrafanaPublic:3000"
+1)  #### Setting up username & password:
     - Once the UI Opens pass the following username and password
         - Username: **admin**
         - Password: **admin**
         - New Username: **admin**
         - New Password: **admin**
         - Save and Continue
+
+2) #### Adding Datasource as Prometheus:
     - Once you get into Grafana, follow the below steps to Import a Dashboard into Grafana to visualize your Infrastructure/App Metrics
         - Click on "Configuration/Settings" on your left
         - Click on "Data Sources"
@@ -260,24 +245,60 @@ Copy your Jenkins Public IP Address and paste on the browser = http:://NexusServ
         - Select Prometheus
         - Underneath HTTP URL: http://PrometheusPrivateIPaddress:9090
         - Click on "SAVE and TEST"
+
+3) #### Create NodeExporter Dashboard:    
     - Navigate to "Create" on your left (the `+` sign)
         - Click on "Import"
-        - Copy the following link: https://grafana.com/grafana/dashboards/1860
+        - Download the required NodeExporter dashboard JSON in the link https://grafana.com/api/dashboards/1860/revisions/27/download               ( #Ref: https://grafana.com/grafana/dashboards/1860-node-exporter-full/)
+        - Click on Upload JSON file and upload the file downloaded in the above step        -
+        - Scrol down to "Prometheus" and select the "Data Source" you defined ealier which is "Prometheus"
+        - CLICK on "Import"
+        - Save
+    - Refresh your Grafana Dashbaord 
+        - Click on the "Drop Down" for "Host" and select any of the "Instances(IP)"
+
+3) #### Create Jenkins Performance and Health Overview Dashboard:    
+    - Navigate to "Create" on your left (the `+` sign)
+        - Click on "Import"
+        - Copy the following link: https://grafana.com/grafana/dashboards/9964                              ( #Ref: https://grafana.com/grafana/dashboards/9964-jenkins-performance-and-health-overview/)
         - Paste the above link where you have "Import Via Grafana.com"
         - Click on Load (The one right beside the link you just pasted)
         - Scrol down to "Prometheus" and select the "Data Source" you defined ealier which is "Prometheus"
         - CLICK on "Import"
+        - Save
     - Refresh your Grafana Dashbaord 
         - Click on the "Drop Down" for "Host" and select any of the "Instances(IP)"
 
-10) Update Your Jenkins file with your Slack Channel Name
-    - Go back to your local, open your "Jenkins-CICD-Project" repo/folder/directory on VSCODE
-    - Open your "Jenkinsfile"
-    - Update the slack channel name on line "97"
-    - Change name from "jenkins-cicd-pipeline-alerts" to yours
-    - Add the changes to git, commit and push to GitHub
-    - Confirm the changes reflects on GitHub
 
 
+### GitHub webhook
 
-13) Confirm and make test your installations/setups  
+1) #### Add jenkins webhook to github
+    - Access your repo **devops-fully-automated** on github
+    - Goto Settings --> Webhooks --> Click on Add webhook 
+    - Payload URL: **htpp://REPLACE-JENKINS-SERVER-PUBLIC-IP:8080/github-webhook/**             (Note: The IP should be public as GitHub is outside of the AWS VPC where Jenkins server is hosted)
+    - Click on Add webhook
+
+2) #### Configure on the Jenkins side to pull based on the event
+    - Access your jenkins server, pipeline **app-cicd-pipeline**
+    - Once pipeline is accessed --> Click on Configure --> In the General section --> **Select GitHub project checkbox** and fill your repo URL of the project devops-fully-automated.
+    - Scroll down --> In the Build Triggers section -->  **Select GitHub hook trigger for GITScm polling checkbox**
+
+Once both the above steps are done click on Save.
+
+
+### Codebase setup
+
+1) #### Nexus IP's change
+    - Go back to your local, open your "devops-fully-automated" project on VSCODE
+    - Open "pom.xml" & Replace the nexus server private ip on line numbers 32 & 36
+    - Open nexus-setup/settings.xml & Replace the nexus server private ip on line numbers 21
+    - Save the changes in both files
+    - Finally push changes to repo
+        `git add .`
+        `git commit -m "relevant commit message"`
+        `git push`
+
+
+## Finally observe the whole flow and understand the integrations :) 
+# Happy learning, everyone 😊 😊
