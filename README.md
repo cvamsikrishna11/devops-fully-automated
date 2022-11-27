@@ -140,9 +140,10 @@
         3)
         - Go to section Slack -->
         - Workspace: **devops-fully-automated**
-        
-        
-
+        - Credentials --> Add --> kind (Secret text)
+        - Secret: **3jrfd3GjdMac0dgcxJwcOgQU**
+        - ID: **slack-token**
+        - Description: **slack-token**
             
 
 
