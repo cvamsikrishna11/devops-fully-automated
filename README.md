@@ -6,7 +6,7 @@
 1) Import GitHub Repository by using the existing repo "devops-fully-automated" (https://github.com/cvamsikrishna11/devops-fully-automated)     
     - Go to GitHub (github.com)
     - Login to your GitHub Account
-    - ** Import repository "devops-fully-automated" (https://github.com/cvamsikrishna11/devops-fully-automated) & name it "devops-fully-automated" **
+    - **Import repository "devops-fully-automated" (https://github.com/cvamsikrishna11/devops-fully-automated) & name it "devops-fully-automated"**
     - Clone your newly created repo to your local
 
 2) Jenkins/Maven/Ansible
@@ -14,7 +14,7 @@
     - Instance type: t2.medium
     - Security Group (Open): 8080, 9100 and 22 to 0.0.0.0/0
     - Key pair: Select or create a new keypair
-    - ** Attach Jenkins server with IAM role having "AdministratorAccess" **
+    - **Attach Jenkins server with IAM role having "AdministratorAccess"**
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/jenkins-maven-ansible-setup.sh
     - Launch Instance
 
@@ -47,7 +47,7 @@
     - Instance type: t2.micro
     - Security Group (Open): 9090 and 22 to 0.0.0.0/0
     - Key pair: Select or create a new keypair
-    - ** Attach Jenkins server with IAM role having "AmazonEC2ReadOnlyAccess" **
+    - **Attach Jenkins server with IAM role having "AmazonEC2ReadOnlyAccess"**
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/prometheus-setup.sh
     - Launch Instance
 
@@ -60,16 +60,16 @@
     - Launch Instance
 
 8) Slack 
-    - ** Join the slack channel https://join.slack.com/t/slack-wcl4742/shared_invite/zt-1kid01o3n-W47OUTHBd2ZZpSzGnow1Wg **
-    - ** Join into the channel "#team-devops" **
+    - **Join the slack channel https://join.slack.com/t/slack-wcl4742/shared_invite/zt-1kid01o3n-W47OUTHBd2ZZpSzGnow1Wg**
+    - **Join into the channel "#team-devops"**
 
 9) Open a New Tab on your browser for Grafana also if you've not done so already. 
     - Copy your Grafana Instance Public IP and put on the browser with port 3000 e.g "GrafanaPublic:3000"
     - Once the UI Opens pass the following username and password
-        - Username: admin
-        - Password: admin
-        - New Username: admin
-        - New Password: admin
+        - Username: **admin**
+        - Password: **admin**
+        - New Username: **admin**
+        - New Password: **admin**
         - Save and Continue
     - Once you get into Grafana, follow the below steps to Import a Dashboard into Grafana to visualize your Infrastructure/App Metrics
         - Click on "Configuration/Settings" on your left
