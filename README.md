@@ -129,21 +129,21 @@
     #### Configure system:
     - Click on Manage Jenkins --> Global Tool Configuration
         1)
-        - Go to section SonarQube servers --> **Add SonarQube **
-        - Name: **SonarQube**
-        - Server URL: http://REPLACE-WITH-SONARQUBE-SERVER-PRIVATE-IP:9000 (replace SonarQube privat IP here)
+            - Go to section SonarQube servers --> **Add SonarQube **
+            - Name: **SonarQube**
+            - Server URL: http://REPLACE-WITH-SONARQUBE-SERVER-PRIVATE-IP:9000 (replace SonarQube privat IP here)
 
         2)
-        - Go to section Prometheus --> **Add SonarQube **
-        - Collecting metrics period in seconds: **120**
+            - Go to section Prometheus
+            - Collecting metrics period in seconds: **120**
 
         3)
-        - Go to section Slack -->
-        - Workspace: **devops-fully-automated**
-        - Credentials --> Add --> kind (Secret text)
-        - Secret: **3jrfd3GjdMac0dgcxJwcOgQU**
-        - ID: **slack-token**
-        - Description: **slack-token**
+            - Go to section Slack
+            - Workspace: **devops-fully-automated**
+            - Credentials --> Add --> kind (Secret text)
+            - Secret: **3jrfd3GjdMac0dgcxJwcOgQU**
+            - ID: **slack-token**
+            - Description: **slack-token**
             
 
 
