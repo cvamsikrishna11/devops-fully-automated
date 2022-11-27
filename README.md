@@ -131,7 +131,7 @@
 
         1)  - Go to section SonarQube servers --> **Add SonarQube **
             - Name: **SonarQube**
-            - Server URL: http://REPLACE-WITH-SONARQUBE-SERVER-PRIVATE-IP:9000 (replace SonarQube privat IP here)
+            - Server URL: http://REPLACE-WITH-SONARQUBE-SERVER-PRIVATE-IP:9000          (replace SonarQube privat IP here)
 
         2)  - Go to section Prometheus
             - Collecting metrics period in seconds: **120**
@@ -141,8 +141,33 @@
             - Credentials --> Add --> kind (Secret text)
             - Secret: **3jrfd3GjdMac0dgcxJwcOgQU**
             - ID: **slack-token**
-            - Description: **slack-token**
-            
+            - Description: **slack-token**           
+
+### SonarQube setup
+1) Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:9000
+    
+    #### Token generation:
+    - Login to your SonarQube server with the credentials username: **admin** & password: **admin**
+    - Click on profile --> My Account --> Security --> Tokens
+    - Generate Tokens: **jenkins-token**
+    - Click on **Generate**
+    - **Note: Copy the token and save it as a backup somewhere**
+    - Now access jenkins --> Manage jenkins --> Manage Credentials
+    - Create a new secret by clicking on --> global drop-down --> Add credentials 
+    - Kind: Secret text
+    - Secret: Fill the secret token value that we have created on the SonarQube server
+    - ID: sonarqube-token
+    - Description: sonarqube-token
+    - Click on Create
+
+    #### Jenkins webhook in SonarQube:
+    - Login into SonarQube
+    - Go to Administration --> Configuration --> Webhooks --> Click on Create
+    - Name: Jenkins-Webhook
+    - URL: http://REPLACE-WITH-JENKINS-PRIVATE-IP:8080/sonarqube-webhook/           (replace SonarQube privat IP here)
+    - Click on Create
+
+     
 
 
 9) Open a New Tab on your browser for Grafana also if you've not done so already. 
