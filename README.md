@@ -93,7 +93,7 @@
     - Once all plugins are installed, select **Restart Jenkins when installation is complete and no jobs are running**
 
 
-    #### Pipeline creation
+3)  #### Pipeline creation
     - Click on **New Item**
     - Enter an item name: **app-cicd-pipeline** & select the category as **Pipeline**
     - Now scroll-down and in the Pipeline section --> Definition --> Select Pipeline script from SCM
@@ -105,7 +105,7 @@
     - Save
 
 
-    #### Global tools configuration:
+4)  #### Global tools configuration:
     - Click on Manage Jenkins --> Global Tool Configuration
     - **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> Extract *.zip/*.tar.gz --> Fill the below values
         * Name: **localJdk**
@@ -113,20 +113,10 @@
         * Subdirectory of extracted archive: **jdk-11.0.1**
     - **Maven** --> Add Maven --> Make sure **Install automatically** is enabled --> Install from Apache --> Fill the below values
         * Name: **localMaven**
-        * Version: Keep the default version as it is
+        * Version: Keep the default version as it is 
 
     
-    #### Global tools configuration:
-    - Click on Manage Jenkins --> Global Tool Configuration
-    - **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> Extract *.zip/*.tar.gz --> Fill the below values
-        * Name: **localJdk**
-        * Download URL for binary archive: **https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz**
-        * Subdirectory of extracted archive: **jdk-11.0.1**
-    - **Maven** --> Add Maven --> Make sure **Install automatically** is enabled --> Install from Apache --> Fill the below values
-        * Name: **localMaven**
-        * Version: Keep the default version as it is
-    
-    #### Configure system:
+5)  #### Configure system:
     - Click on Manage Jenkins --> Global Tool Configuration
 
         1)  - Go to section SonarQube servers --> **Add SonarQube **
@@ -144,9 +134,10 @@
             - Description: **slack-token**           
 
 ### SonarQube setup
-1) Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:9000
+
+Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:9000
     
-    #### Token generation:
+1)  #### Token generation:
     - Login to your SonarQube server with the credentials username: **admin** & password: **admin**
     - Click on profile --> My Account --> Security --> Tokens
     - Generate Tokens: **jenkins-token**
@@ -160,7 +151,7 @@
     - Description: sonarqube-token
     - Click on Create
 
-    #### Jenkins webhook in SonarQube:
+2)  #### Jenkins webhook in SonarQube:
     - Login into SonarQube
     - Go to Administration --> Configuration --> Webhooks --> Click on Create
     - Name: Jenkins-Webhook
