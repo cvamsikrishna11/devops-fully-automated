@@ -79,24 +79,24 @@
     - Continue and Start using Jenkins
 
 2)  ###### Plugin installations:
-        - Click on "Manage Jenkins"
-        - Click on "Plugin Manager"
-        - Click "Available"
-        - Search and Install the following Plugings "Install Without Restart"
-            - **SonnarQube Scanner**
-            - **Prometheus metrics**
-            - **CloudBees Disk Usage Simple**
-            - **Slack Notification**
-        - Once all plugins are installed, select **Restart Jenkins when installation is complete and no jobs are running**
+    - Click on "Manage Jenkins"
+    - Click on "Plugin Manager"
+    - Click "Available"
+    - Search and Install the following Plugings "Install Without Restart"
+        - **SonnarQube Scanner**
+        - **Prometheus metrics**
+        - **CloudBees Disk Usage Simple**
+        - **Slack Notification**
+    - Once all plugins are installed, select **Restart Jenkins when installation is complete and no jobs are running**
     ###### Global tools configuration:
-        - Click on Manage Jenkins --> Global Tool Configuration
-        - **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> Extract *.zip/*.tar.gz --> Fill the below values
-            * Name: **localJdk**
-            * Download URL for binary archive: **https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz**
-            * Subdirectory of extracted archive: **jdk-11.0.1**
-        - **Maven** --> Add Maven --> Make sure **Install automatically** is enabled --> Install from Apache --> Fill the below values
-            * Name: **localMaven**
-            * Version: Keep the default version as it is
+    - Click on Manage Jenkins --> Global Tool Configuration
+    - **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> Extract *.zip/*.tar.gz --> Fill the below values
+        * Name: **localJdk**
+        * Download URL for binary archive: **https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz**
+        * Subdirectory of extracted archive: **jdk-11.0.1**
+    - **Maven** --> Add Maven --> Make sure **Install automatically** is enabled --> Install from Apache --> Fill the below values
+        * Name: **localMaven**
+        * Version: Keep the default version as it is
             
 
 
