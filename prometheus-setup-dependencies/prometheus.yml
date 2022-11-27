@@ -11,9 +11,21 @@ scrape_configs:
     ec2_sd_configs:
       - region: us-east-1        
         port: 9100
+      - region: us-east-1        
+        port: 8080
+        metrics_path: /prometheus/
   - job_name: 'jenkins'
     metrics_path: /prometheus/
-    static_configs:
-    - targets: ['192.168.32.13:8080'] # should replace with the jenkins IP
+    ec2_sd_configs:     
+      - region: us-east-1        
+        port: 8080
+        filters:
+          - name: tag:Application
+            values:
+              - jenkins        
+  # - job_name: 'jenkins'
+  #   metrics_path: /prometheus/
+  #   static_configs:
+  #   - targets: ['192.168.32.13:8080'] # should replace with the jenkins IP
     
         
