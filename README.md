@@ -3,13 +3,14 @@
 
 # Jenkins Complete CI/CD Pipeline Environment Setup 
 
-1) Import GitHub Repository by using the existing repo "devops-fully-automated" (https://github.com/cvamsikrishna11/devops-fully-automated)     
+1) ###### GitHub setup
+    Import GitHub Repository by using the existing repo "devops-fully-automated" (https://github.com/cvamsikrishna11/devops-fully-automated)     
     - Go to GitHub (github.com)
     - Login to your GitHub Account
     - **Import repository "devops-fully-automated" (https://github.com/cvamsikrishna11/devops-fully-automated) & name it "devops-fully-automated"**
     - Clone your newly created repo to your local
 
-2) Jenkins/Maven/Ansible
+2) ###### Jenkins/Maven/Ansible
     - Create an **Amazon Linux 2 VM** instance and call it "jenkins-maven-ansible"
     - Instance type: t2.medium
     - Security Group (Open): 8080, 9100 and 22 to 0.0.0.0/0
@@ -19,7 +20,7 @@
     - Launch Instance
     - After launching this Jenkins server, attach a tag as **Key=Application, value=jenkins**
 
-3) SonarQube
+3) ###### SonarQube
     - Create an Create an **Ubuntu 20.04** VM instance and call it "SonarQube"
     - Instance type: t2.medium
     - Security Group (Open): 9000, 9100 and 22 to 0.0.0.0/0
@@ -27,7 +28,7 @@
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/sonarqube-setup.sh
     - Launch Instance
 
-4) Nexus
+4) ###### Nexus
     - Create an **Amazon Linux 2** VM instance and call it "Nexus"
     - Instance type: t2.medium
     - Security Group (Open): 8081, 9100 and 22 to 0.0.0.0/0
@@ -35,7 +36,7 @@
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/nexus-setup.sh
     - Launch Instance
 
-5) EC2 (Dev/Stage/Prod)
+5) ###### EC2 (Dev/Stage/Prod)
     - Create 6 **Amazon Linux 2** VM instances
     - Instance type: t2.micro
     - Security Group (Open): 8080, 9100 and 22 to 0.0.0.0/0
@@ -44,7 +45,7 @@
     - Launch Instance
     - After launching this Jenkins servers, attach a tag as **Key=Environment, value=dev/stage/prod** ( out of 6, each 2 instances could be tagges as one env)
 
-6) Prometheus
+6) ###### Prometheus
     - Create Amazon Linux 2 VM instance and call it "Prometheus"
     - Instance type: t2.micro
     - Security Group (Open): 9090 and 22 to 0.0.0.0/0
@@ -53,7 +54,7 @@
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/prometheus-setup.sh
     - Launch Instance
 
-7) Grafana
+7) ###### Grafana
     - Create an **Ubuntu 20.04** VM instance and call it "Grafana"
     - Instance type: t2.micro
     - Security Group (Open): 3000 and 22 to 0.0.0.0/0
@@ -61,7 +62,7 @@
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/grafana-setup.sh
     - Launch Instance
 
-8) Slack 
+8) ###### Slack 
     - **Join the slack channel https://join.slack.com/t/slack-wcl4742/shared_invite/zt-1kid01o3n-W47OUTHBd2ZZpSzGnow1Wg**
     - **Join into the channel "#team-devops"**
 
