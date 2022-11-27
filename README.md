@@ -125,6 +125,24 @@
     - **Maven** --> Add Maven --> Make sure **Install automatically** is enabled --> Install from Apache --> Fill the below values
         * Name: **localMaven**
         * Version: Keep the default version as it is
+    
+    #### Configure system:
+    - Click on Manage Jenkins --> Global Tool Configuration
+        1)
+        - Go to section SonarQube servers --> **Add SonarQube **
+        - Name: **SonarQube**
+        - Server URL: http://REPLACE-WITH-SONARQUBE-SERVER-PRIVATE-IP:9000 (replace SonarQube privat IP here)
+
+        2)
+        - Go to section Prometheus --> **Add SonarQube **
+        - Collecting metrics period in seconds: **120**
+
+        3)
+        - Go to section Slack -->
+        - Workspace: **devops-fully-automated**
+        
+        
+
             
 
 
