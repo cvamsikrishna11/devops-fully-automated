@@ -1,5 +1,5 @@
 #!/bin/bash
-# Hardware requirements: AWS Linux 2 with mimum t2.micro type instance & port 9090 should be allowed on the security groups
+# Hardware requirements: AWS Linux 2 with mimum t2.micro type instance & port 9090, should be allowed on the security groups
 # Attach a role to this Prometheus server with IAM policy as --> AmazonEC2ReadOnlyAccess
 
 # Installing Git
