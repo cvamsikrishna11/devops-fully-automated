@@ -181,7 +181,68 @@ Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:9000
     - Name: Jenkins-Webhook
     - URL: http://REPLACE-WITH-JENKINS-PRIVATE-IP:8080/sonarqube-webhook/           (replace SonarQube privat IP here)
     - Click on Create
-     
+
+
+### Nexus setup
+
+Copy your Jenkins Public IP Address and paste on the browser = http:://NexusServerExternalIP:8081
+
+1)  #### Setting up password:
+    - SSH into Nexus server
+    - Execute `sudo cat /opt/nexus/sonatype-work/nexus3/admin.password`'
+    - Copy the default password
+    - Now login into Nexus console with the username: admin & password (copied from the SSH above)
+    - Once signed in fill the below details in the setup wizard
+    - New password: admin
+    - Confirm password: admin
+    - Configure anonymus access: Select Disable anonymus access
+    - Click on Finish
+
+1)  #### Creating a new maven repository for project:
+    - SSH into Nexus server
+    - Execute `sudo cat /opt/nexus/sonatype-work/nexus3/admin.password`'
+    - Copy the default password
+    - Now login into Nexus console with the username: admin & password (copied from the SSH above)
+    - Once signed in fill the below details in the setup wizard
+    - New password: admin
+    - Confirm password: admin
+    - Configure anonymus access: Select Disable anonymus access
+    - Click on Finish
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 9) Open a New Tab on your browser for Grafana also if you've not done so already. 
