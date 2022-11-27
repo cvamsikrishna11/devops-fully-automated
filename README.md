@@ -3,6 +3,7 @@
 
 # Jenkins Complete CI/CD Pipeline Environment Setup 
 
+## CICD Applications setup
 1) ###### GitHub setup
     Import GitHub Repository by using the existing repo "devops-fully-automated" (https://github.com/cvamsikrishna11/devops-fully-automated)     
     - Go to GitHub (github.com)
@@ -67,7 +68,8 @@
     - **Join into the channel "#team-devops"**
 
 ### Jenkins setup
-1) Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:8080
+1) #### Access Jenkins
+    Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:8080
     - Login to your Jenkins instance using your Shell (GitBash or your Mac Terminal)
     - Copy the Path from the Jenkins UI to get the Administrator Password
         - Run: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
@@ -79,7 +81,7 @@
         - Name and Email can also be admin. You can use `admin` all, as its a poc.
     - Continue and Start using Jenkins
 
-2)  ###### Plugin installations:
+2)  #### Plugin installations:
     - Click on "Manage Jenkins"
     - Click on "Plugin Manager"
     - Click "Available"
@@ -91,7 +93,7 @@
     - Once all plugins are installed, select **Restart Jenkins when installation is complete and no jobs are running**
 
 
-    ###### Pipeline creation
+    #### Pipeline creation
     - Click on **New Item**
     - Enter an item name: **app-cicd-pipeline** & select the category as **Pipeline**
     - Now scroll-down and in the Pipeline section --> Definition --> Select Pipeline script from SCM
@@ -103,7 +105,7 @@
     - Save
 
 
-    ###### Global tools configuration:
+    #### Global tools configuration:
     - Click on Manage Jenkins --> Global Tool Configuration
     - **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> Extract *.zip/*.tar.gz --> Fill the below values
         * Name: **localJdk**
@@ -112,9 +114,9 @@
     - **Maven** --> Add Maven --> Make sure **Install automatically** is enabled --> Install from Apache --> Fill the below values
         * Name: **localMaven**
         * Version: Keep the default version as it is
-        
+
     
-    ###### Global tools configuration:
+    #### Global tools configuration:
     - Click on Manage Jenkins --> Global Tool Configuration
     - **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> Extract *.zip/*.tar.gz --> Fill the below values
         * Name: **localJdk**
