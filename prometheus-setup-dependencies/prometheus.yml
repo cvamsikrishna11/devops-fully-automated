@@ -11,9 +11,6 @@ scrape_configs:
     ec2_sd_configs:
       - region: us-east-1        
         port: 9100
-      - region: us-east-1        
-        port: 8080
-        metrics_path: /prometheus/
   - job_name: 'jenkins'
     metrics_path: /prometheus/
     ec2_sd_configs:     
