@@ -12,8 +12,8 @@
     - Clone your newly created repo to your local
 
 2) ###### Jenkins/Maven/Ansible
-    - Create an **Amazon Linux 2 VM** instance and call it "jenkins-maven-ansible"
-    - Instance type: t2.medium
+    - Create an **Amazon Linux 2 VM** instance and call it "Jenkins"
+    - Instance type: t2.large
     - Security Group (Open): 8080, 9100 and 22 to 0.0.0.0/0
     - Key pair: Select or create a new keypair
     - **Attach Jenkins server with IAM role having "AdministratorAccess"**
@@ -86,7 +86,7 @@
     - Click on "Plugin Manager"
     - Click "Available"
     - Search and Install the following Plugings "Install Without Restart"
-        - **SonnarQube Scanner**
+        - **SonarQube Scanner**
         - **Prometheus metrics**
         - **CloudBees Disk Usage Simple**
         - **Slack Notification**
