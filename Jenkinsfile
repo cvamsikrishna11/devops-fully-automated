@@ -92,7 +92,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to DEV') {
+        stage('Deploy to DEV env') {
             environment {
                 HOSTS = 'dev'
             }
