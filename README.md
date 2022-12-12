@@ -123,7 +123,7 @@
                     Generating SonarQube secret token
                     - Login to your SonarQube server (http://sonarserver-public-ip:9000, with the credentials username: **admin** & password: **admin**)
                     - Click on profile --> My Account --> Security --> Tokens
-                    - Generate Tokens: **jenkins-token**
+                    - Generate Tokens: Fill **jenkins-token**
                     - Click on **Generate**
                     - Copy the token
             - Secret: Fill the secret token value that we have created on the SonarQube server
