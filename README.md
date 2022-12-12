@@ -173,19 +173,19 @@
 
 ### SonarQube setup
 
-Copy your Jenkins Public IP Address and paste on the browser = ExternalIP:9000
+Copy your SonarQube Public IP Address and paste on the browser = ExternalIP:9000
 
 1)  #### Jenkins webhook in SonarQube:
     - Login into SonarQube
     - Go to Administration --> Configuration --> Webhooks --> Click on Create
     - Name: Jenkins-Webhook
-    - URL: http://REPLACE-WITH-JENKINS-PRIVATE-IP:8080/sonarqube-webhook/           (replace SonarQube privat IP here)
+    - URL: http://REPLACE-WITH-JENKINS-PRIVATE-IP:8080/sonarqube-webhook/           (replace Jenkins private IP here)
     - Click on Create
 
 
 ### Nexus setup
 
-Copy your Jenkins Public IP Address and paste on the browser = http:://NexusServerExternalIP:8081
+Copy your Nexus Public IP Address and paste on the browser = http:://NexusServerExternalIP:8081
 
 1)  #### Setting up password:
     - SSH into Nexus server
@@ -214,7 +214,7 @@ Nothing to be done for the Ansible setup as the jenkins server already created w
 
 ### Prometheus setup
 
-Copy your Jenkins Public IP Address and paste on the browser = http:://PrometheusServerExternalIP:9090
+Copy your Prometheus Public IP Address and paste on the browser = http:://PrometheusServerExternalIP:9090
 
 Note: Prometheus setup is also full automated, so just verifying the health of servers are required
 
@@ -227,7 +227,7 @@ Note: Prometheus setup is also full automated, so just verifying the health of s
 
 ### Grafana setup
 
-Copy your Jenkins Public IP Address and paste on the browser = http:://GrafanaServerExternalIP:3000
+Copy your Grafana Public IP Address and paste on the browser = http:://GrafanaServerExternalIP:3000
 
 1)  #### Setting up username & password:
     - Once the UI Opens pass the following username and password
