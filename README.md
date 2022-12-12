@@ -157,21 +157,24 @@
             - Click on Create                 
 
     
-6)  #### Configure system:
-        - Click on Manage Jenkins --> Global Tool Configuration
+6)  #### Configure system:    
 
-        1)  - Go to section SonarQube servers --> **Add SonarQube **
+        1)  - Click on Manage Jenkins --> Global Tool Configuration
+            - Go to section SonarQube servers --> **Add SonarQube **
             - Name: **SonarQube**
             - Server URL: http://REPLACE-WITH-SONARQUBE-SERVER-PRIVATE-IP:9000          (replace SonarQube privat IP here)
+            - Click on Save    
 
-        - Click on Manage Jenkins --> Global Tool Configuration
-
-        2)  - Go to section Prometheus
+        2)  - Click on Manage Jenkins --> Configure System
+            - Go to section Prometheus
             - Collecting metrics period in seconds: **120**
+            - Click on Save
 
-        3)  - Go to section Slack
+        3)  - Click on Manage Jenkins --> Configure System
+            - Go to section Slack
             - Workspace: **devops-fully-automated**
-            - Credentials: select the slack-token credentials (created above) from the drop-down    
+            - Credentials: select the slack-token credentials (created above) from the drop-down  
+            - Click on Save  
 
 ### SonarQube setup
 
@@ -309,7 +312,7 @@ Once both the above steps are done click on Save.
     - Open nexus-setup/settings.xml & Replace the nexus server private ip on line numbers 21
     - Save the changes in both files
     - Finally push changes to repo
-    
+
         `git add .`
 
         `git commit -m "relevant commit message"`
