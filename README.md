@@ -158,11 +158,13 @@
 
     
 6)  #### Configure system:
-    - Click on Manage Jenkins --> Global Tool Configuration
+        - Click on Manage Jenkins --> Global Tool Configuration
 
         1)  - Go to section SonarQube servers --> **Add SonarQube **
             - Name: **SonarQube**
             - Server URL: http://REPLACE-WITH-SONARQUBE-SERVER-PRIVATE-IP:9000          (replace SonarQube privat IP here)
+
+        - Click on Manage Jenkins --> Global Tool Configuration
 
         2)  - Go to section Prometheus
             - Collecting metrics period in seconds: **120**
