@@ -64,7 +64,7 @@
     - Launch Instance
 
 8) ###### Slack 
-    - **Join the slack channel https://join.slack.com/t/slack-wcl4742/shared_invite/zt-1kid01o3n-W47OUTHBd2ZZpSzGnow1Wg**
+    - **Join the slack channel https://join.slack.com/t/devopsfullyau-r0x2686/shared_invite/zt-1lbkygeza-GyX~xX40Pau9i_Ac6U9MLw**
     - **Join into the channel "#team-devops"**
 
 ### Jenkins setup
