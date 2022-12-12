@@ -309,8 +309,11 @@ Once both the above steps are done click on Save.
     - Open nexus-setup/settings.xml & Replace the nexus server private ip on line numbers 21
     - Save the changes in both files
     - Finally push changes to repo
+    
         `git add .`
+
         `git commit -m "relevant commit message"`
+
         `git push`
 
 
