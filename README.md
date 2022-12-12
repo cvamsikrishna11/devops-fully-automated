@@ -291,7 +291,19 @@ Once both the above steps are done click on Save.
 
 ### Codebase setup
 
-1) #### Nexus IP's change
+1) #### SonarQube IP change
+    - Go back to your local, open your "devops-fully-automated" project on VSCODE
+    - Open "Jenkinsfile" & Replace the SonarQube server private ip on line number 69
+    - Save the changes in both files
+    - Finally push changes to repo
+        
+        `git add .`
+
+        `git commit -m "relevant commit message"`
+
+        `git push`
+
+2) #### Nexus IP's change
     - Go back to your local, open your "devops-fully-automated" project on VSCODE
     - Open "pom.xml" & Replace the nexus server private ip on line numbers 32 & 36
     - Open nexus-setup/settings.xml & Replace the nexus server private ip on line numbers 21
