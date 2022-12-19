@@ -112,7 +112,7 @@
         
         **Note:** By default the **Install Oracle Java SE Development Kit from the website** make sure to close that option by clicking on the image as shown below.
 
-        ![JDKSetup!](https://lucid.app/publicSegments/view/a6ef3233-7dda-483a-a662-d8ec90395ba3/image.png)
+        ![JDKSetup!](https://github.com/cvamsikrishna11/devops-fully-automated/blob/main/jdk%20setup.png)
         
         * Click on Add installer
         * Select Extract *.zip/*.tar.gz --> Fill the below values
