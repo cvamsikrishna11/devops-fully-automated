@@ -107,7 +107,15 @@
 
 4)  #### Global tools configuration:
     - Click on Manage Jenkins --> Global Tool Configuration
-    - **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> Extract *.zip/*.tar.gz --> Fill the below values
+
+        **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> 
+        
+        **Note:** By default the **Install Oracle Java SE Development Kit from the website** make sure to close that option by clicking on the image as shown below.
+
+        ![JDKSetup!](https://lucid.app/publicSegments/view/a6ef3233-7dda-483a-a662-d8ec90395ba3/image.png)
+        
+        * Click on Add installer
+        * Select Extract *.zip/*.tar.gz --> Fill the below values
         * Name: **localJdk**
         * Download URL for binary archive: **https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz**
         * Subdirectory of extracted archive: **jdk-11.0.1**
