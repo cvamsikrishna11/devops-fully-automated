@@ -116,6 +116,9 @@
         
         ![JDKSetup!](https://github.com/cvamsikrishna11/devops-fully-automated/blob/main/jdk_setup.png" Remove the default JDK")
 
+
+         ![JDKSetup!](jdk_setup.png?raw=true Remove the default JDK")
+
         * Click on Add installer
         * Select Extract *.zip/*.tar.gz --> Fill the below values
         * Name: **localJdk**
