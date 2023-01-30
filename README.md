@@ -64,7 +64,7 @@
     - Launch Instance
 
 8) ###### Slack 
-    - **Join the slack channel https://join.slack.com/t/devopsfullyau-r0x2686/shared_invite/zt-1lbkygeza-GyX~xX40Pau9i_Ac6U9MLw**
+    - **Join the slack channel https://join.slack.com/t/devopsfullyau-r0x2686/shared_invite/zt-1nzxt7e9z-ChDASWBOysUpa3tH5gi95A**
     - **Join into the channel "#team-devops"**
 
 ### Jenkins setup
@@ -112,12 +112,7 @@
         
         **Note:** By default the **Install Oracle Java SE Development Kit from the website** make sure to close that option by clicking on the image as shown below.
 
-        <!-- ![JDKSetup!](https://github.com/cvamsikrishna11/devops-fully-automated/blob/main/jdk_setup.png) -->
-        
-        ![JDKSetup!](https://github.com/cvamsikrishna11/devops-fully-automated/blob/main/jdk_setup.png" Remove the default JDK")
-
-
-        ![JDK!](jdk_setup.png?raw=true Remove the default JDK")
+        ![JDKSetup!](https://github.com/cvamsikrishna11/devops-fully-automated/blob/main/jdk_setup.png)
 
         * Click on Add installer
         * Select Extract *.zip/*.tar.gz --> Fill the below values
