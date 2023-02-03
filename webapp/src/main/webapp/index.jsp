@@ -28,7 +28,7 @@
 </html> -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
