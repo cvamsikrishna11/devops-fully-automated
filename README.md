@@ -66,6 +66,7 @@
 8) ###### Slack 
     - **Join the slack channel https://join.slack.com/t/devopsfullyau-r0x2686/shared_invite/zt-1nzxt7e9z-ChDASWBOysUpa3tH5gi95A**
     - **Join into the channel "#team-devops"**
+    - Generate Team Subdomain & Integration Token Credential ID (workspace --> channel --> drop-down --> integrations --> Add an App --> Jenkins CI --> Click on Install/View --> Configuration --> Add to Slack --> Select Channel #team-devops --> Store Team subdomain & Integration Token Credential ID which can be used later on)
 
 ### Jenkins setup
 1) #### Access Jenkins
@@ -159,7 +160,7 @@
 
         4)  ###### Slack secret token (slack-token)
             - Kind: Secret text            
-            - Secret: 3jrfd3GjdMac0dgcxJwcOgQU
+            - Secret: Place the Integration Token Credential ID (Note: Generate for slack setup)
             - ID: slack-token
             - Description: slack-token
             - Click on Create                 
@@ -180,8 +181,9 @@
 
         3)  - Click on Manage Jenkins --> Configure System
             - Go to section Slack
-            - Workspace: **devops-fully-automated**
-            - Credentials: select the slack-token credentials (created above) from the drop-down  
+            - Use new team subdomain & integration token credentials created in the above slack joining step
+            - Workspace: **Replace with Team Subdomain value** (created above)
+            - Credentials: select the slack-token credentials (created above) 
             - Click on Save  
 
 ### SonarQube setup
