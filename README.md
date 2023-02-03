@@ -175,7 +175,7 @@
 
         2)  - Click on Manage Jenkins --> Configure System
             - Go to section Prometheus
-            - Collecting metrics period in seconds: **120**
+            - Collecting metrics period in seconds: **15**
             - Click on Save
 
         3)  - Click on Manage Jenkins --> Configure System
