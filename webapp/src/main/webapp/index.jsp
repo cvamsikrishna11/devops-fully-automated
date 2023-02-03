@@ -172,3 +172,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
 </body>
 </html>
+
+
+<!-- https://www.w3schools.com/w3css/tryw3css_templates_cv.htm -->
