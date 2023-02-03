@@ -184,6 +184,7 @@
             - Use new team subdomain & integration token credentials created in the above slack joining step
             - Workspace: **Replace with Team Subdomain value** (created above)
             - Credentials: select the slack-token credentials (created above) 
+            - Default channel / member id: #general
             - Click on Save  
 
 ### SonarQube setup
