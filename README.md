@@ -127,7 +127,7 @@
     - Click on Manage Jenkins --> Manage Credentials --> Global credentials (unrestricted) --> Add Credentials
 
         1)  ###### SonarQube secret token (sonarqube-token)
-            - Kind: Secret text
+            - Kind: Secret text :
                     Generating SonarQube secret token
                     - Login to your SonarQube server (http://sonarserver-public-ip:9000, with the credentials username: **admin** & password: **admin**)
                     - Click on profile --> My Account --> Security --> Tokens
