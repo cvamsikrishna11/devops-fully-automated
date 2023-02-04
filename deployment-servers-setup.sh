@@ -3,8 +3,7 @@
 # setup for the ansible configuration
 sudo yum update –y
 sudo useradd ansadmin
-sudo passwd ansadmin
-sudo echo ansadmin:ansadmin | chpasswd
+sudo echo "ansadmin:ansadmin" | chpasswd
 sudo sed -i "s/.*PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
 sudo service sshd restart
 sudo echo "%wheel  ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
@@ -33,4 +32,3 @@ sudo systemctl daemon-reload
 sudo systemctl enable node-exporter
 sudo systemctl start node-exporter
 sudo systemctl status node-exporter
-
