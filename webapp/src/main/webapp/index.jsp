@@ -1,32 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Page Title</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-/* Header/logo Title */
-.header {
-  padding: 80px;
-  text-align: center;
-  background: #E97777;
-  color: white;
-}
-/* Increase the font size of the heading */
-.header h1 {
-  font-size: 50px;
-}
-</style>
-</head>
-<body>
-<div class="header">
-  <h1>Hello JJ Tech Family !!!</h1>
-  <p>This Java Web Application Was Deployed Using CI/CD</p>
-  
-</div>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,7 +116,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <hr>
         </div>
         <div class="w3-container">
-          <h5 class="w3-opacity"><strong>School of Coding</strong></h5>
+          <h5 class="w3-opacity"><strong>School of Coding@JJTech</strong></h5>
           <h6 class="w3-text-teal"><em class="fa fa-calendar fa-fw w3-margin-right"></em>2010 - 2013</h6>
           <p>Bachelor Degree</p><br>
         </div>

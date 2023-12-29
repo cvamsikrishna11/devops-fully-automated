@@ -13,7 +13,7 @@
 
 2) ###### Jenkins/Maven/Ansible
     - Create an **Amazon Linux 2 VM** instance and call it "Jenkins"
-    - Instance type: t2.large
+    - Instance type: t2.medium
     - Security Group (Open): 8080, 9100 and 22 to 0.0.0.0/0
     - Key pair: Select or create a new keypair
     - **Attach Jenkins server with IAM role having "AdministratorAccess"**
@@ -84,13 +84,14 @@
 
 2)  #### Plugin installations:
     - Click on "Manage Jenkins"
-    - Click on "Plugin Manager"
-    - Click "Available"
+    - Click on "Plugins"
+    - Click "Available plugins"
     - Search and Install the following Plugings "Install Without Restart"
         - **SonarQube Scanner**
         - **Prometheus metrics**
         - **CloudBees Disk Usage Simple**
         - **Slack Notification**
+        - **Test Results Analyzer**
     - Once all plugins are installed, select **Restart Jenkins when installation is complete and no jobs are running**
 
 
@@ -106,8 +107,8 @@
     - Save
 
 
-4)  #### Global tools configuration:
-    - Click on Manage Jenkins --> Global Tool Configuration
+4)  #### Tools configuration:
+    - Click on Manage Jenkins --> Tools
 
         **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> 
         
@@ -125,7 +126,7 @@
         * Version: Keep the default version as it is 
 
 5)  #### Credentials setup(SonarQube, Nexus, Ansible, Slack):
-    - Click on Manage Jenkins --> Manage Credentials --> Global credentials (unrestricted) --> Add Credentials
+    - Click on Manage Jenkins --> Credentials --> System --> Global credentials (unrestricted) --> Add Credentials
 
         1)  ###### SonarQube secret token (sonarqube-token)
             - Kind: Secret text :
@@ -168,11 +169,11 @@
     
 6)  #### Configure system:    
 
-        1)  - Click on Manage Jenkins --> Global Tool Configuration
+        1)  - Click on Manage Jenkins --> System
             - Go to section SonarQube servers --> **Add SonarQube **
             - Name: **SonarQube**
             - Server URL: http://REPLACE-WITH-SONARQUBE-SERVER-PRIVATE-IP:9000          (replace SonarQube privat IP here)
-            - Click on Save    
+            - Click on Save
 
         2)  - Click on Manage Jenkins --> Configure System
             - Go to section Prometheus

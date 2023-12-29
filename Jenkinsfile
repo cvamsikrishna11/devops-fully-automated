@@ -17,44 +17,50 @@ pipeline {
 
     stages {
         stage('Git checkout') {
-            steps {
+            steps {                
                 echo 'Cloning the application code...'
                 git branch: 'main', url: 'https://github.com/cvamsikrishna11/devops-fully-automated.git'
-
             }
         }
 
-        stage('Build') {
-            steps {
-                sh 'java -version'
-                sh 'mvn -U clean package'
-            }
-
-            post {
-                success {
-                    echo 'archiving....'
-                    archiveArtifacts artifacts: '**/*.war', followSymlinks: false
-                }
-            }
-        }
-
-        stage('Unit Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-        stage('Integration Test') {
-            steps {
-                sh 'mvn verify -DskipUnitTests'
-            }
-        }
         stage('Checkstyle Code Analysis') {
             steps {
                 sh 'mvn checkstyle:checkstyle'
             }
             post {
                 success {
-                    echo 'Generated Analysis Result'
+                    echo 'Checkstyle analysis completed successfully.'
+                }
+                failure {
+                    echo 'Checkstyle violations found.'
+                }
+            }
+        }
+
+        stage('Clean and Compile') {
+            steps {
+                sh 'mvn -U clean compile'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+                junit '**/target/surefire-reports/*.xml'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh 'mvn package -DskipTests'            
+            }
+            post {
+                success {
+                    echo 'Package completed. Archiving artifacts...'
+                    archiveArtifacts artifacts: '**/target/*.war', followSymlinks: false
+                }
+                failure {
+                    echo 'Package failed. Skipping artifact archival.'
                 }
             }
         }
@@ -64,11 +70,11 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {
                     withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                         sh """
-                    mvn sonar:sonar \
-                    -Dsonar.projectKey=maven \
-                    -Dsonar.host.url=http://52.91.26.64:9000 \
-                    -Dsonar.login=$SONAR_TOKEN
-                    """
+                        mvn sonar:sonar \
+                        -Dsonar.projectKey=maven \
+                        -Dsonar.host.url=http://3.90.80.170:9000 \
+                        -Dsonar.login=$SONAR_TOKEN
+                        """
                     }
                 }
             }
@@ -83,12 +89,11 @@ pipeline {
         stage('Upload artifact to Nexus') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'PASSWORD', usernameVariable: 'USER_NAME')]) {
-                sh "sed -i \"s/.*<username><\\/username>/<username>$USER_NAME<\\/username>/g\" ${WORKSPACE}/nexus-setup/settings.xml"
-                sh "sed -i \"s/.*<password><\\/password>/<password>$PASSWORD<\\/password>/g\" ${WORKSPACE}/nexus-setup/settings.xml"
-                sh 'cp -f ${WORKSPACE}/nexus-setup/settings.xml /var/lib/jenkins/.m2'
-                sh 'mvn clean deploy -DskipTests'
+                    sh "sed -i \"s/.*<username><\\/username>/<username>$USER_NAME<\\/username>/g\" ${WORKSPACE}/nexus-setup/settings.xml"
+                    sh "sed -i \"s/.*<password><\\/password>/<password>$PASSWORD<\\/password>/g\" ${WORKSPACE}/nexus-setup/settings.xml"
+                    sh 'cp ${WORKSPACE}/nexus-setup/settings.xml /var/lib/jenkins/.m2'
+                    sh 'mvn deploy -DskipTests'
                 }
-               
             }
         }
 
