@@ -116,7 +116,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <hr>
         </div>
         <div class="w3-container">
-          <h5 class="w3-opacity"><strong>School of Coding@JJTech</strong></h5>
+          <h5 class="w3-opacity"><strong>School of Coding</strong></h5>
           <h6 class="w3-text-teal"><em class="fa fa-calendar fa-fw w3-margin-right"></em>2010 - 2013</h6>
           <p>Bachelor Degree</p><br>
         </div>
