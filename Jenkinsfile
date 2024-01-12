@@ -95,6 +95,15 @@ pipeline {
                     sh 'mvn deploy -DskipTests'
                 }
             }
+            post {
+                success {
+                    echo 'Arfiacts has been backed up onto Nexus..!'
+                }
+                failure {
+                    echo 'Artifact upload failed hence removing the settings.xml file which might cause issues on the check-style'
+                    sh 'sudo rm -f /var/lib/jenkins/.m2/settings.xml'
+                }
+            }
         }
 
         stage('Deploy to DEV env') {
