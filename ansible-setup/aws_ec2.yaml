@@ -2,6 +2,7 @@ plugin: aws_ec2
 
 regions:
   - us-east-1
+  - eu-west-1
 
 filters:
   # All instances with their `Environment` tag set to `dev`
