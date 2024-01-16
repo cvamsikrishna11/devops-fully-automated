@@ -8,7 +8,7 @@
     Fork GitHub Repository by using the existing repo "devops-fully-automated" (https://github.com/cvamsikrishna11/devops-fully-automated)     
     - Go to GitHub (github.com)
     - Login to your GitHub Account
-    - **Fork repository "devops-fully-automated" (https://github.com/cvamsikrishna11/devops-fully-automated) & name it "devops-fully-automated"**
+    - **Fork repository "devops-fully-automated" (https://github.com/dfonka/devops-fully-automated.git) & name it "devops-fully-automated"**
     - Clone your newly created repo to your local
 
 2) ###### Jenkins/Maven/Ansible
@@ -114,7 +114,7 @@
         
         **Note:** By default the **Install Oracle Java SE Development Kit from the website** make sure to close that option by clicking on the image as shown below.
 
-        ![JDKSetup!](https://github.com/cvamsikrishna11/devops-fully-automated/blob/main/jdk_setup.png)
+        ![JDKSetup!](https://github.com/dfonka/devops-fully-automated.git/blob/main/jdk_setup.png)
 
         * Click on Add installer
         * Select Extract *.zip/*.tar.gz --> Fill the below values
@@ -334,3 +334,4 @@ Once both the above steps are done click on Save.
 
 ## Finally observe the whole flow and understand the integrations :) 
 # Happy learning, everyone! 😊 😊
+CHEERS DERICK FONKA
