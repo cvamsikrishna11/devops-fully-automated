@@ -38,13 +38,13 @@
     - Launch Instance
 
 5) ###### EC2 (Dev/Stage/Prod)
-    - Create 6 **Amazon Linux 2** VM instances
+    - Create 3 **Amazon Linux 2** VM instances
     - Instance type: t2.micro
     - Security Group (Open): 8080, 9100 and 22 to 0.0.0.0/0
     - Key pair: Select or create a new keypair
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/deployment-servers-setup.sh
     - Launch Instance
-    - After launching this Jenkins servers, attach a tag as **Key=Environment, value=dev/stage/prod** ( out of 6, each 2 instances could be tagges as one env)
+    - After launching this Jenkins servers, attach a tag as **Key=Environment, value=dev/stage/prod** ( out of 3, each 1 instances could be tagges as one env)
 
 6) ###### Prometheus
     - Create Amazon Linux 2 VM instance and call it "Prometheus"
@@ -62,8 +62,8 @@
     - Key pair: Select or create a new keypair
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/grafana-setup.sh
     - Launch Instance
-
-8) ###### Slack 
+  
+8) ###### Slack workspace invite and configuring the token
     - **Join the slack channel https://join.slack.com/t/devopsfullyau-r0x2686/shared_invite/zt-1nzxt7e9z-ChDASWBOysUpa3tH5gi95A**
     - **Join into the channel "#team-devops"**
     - Generate Team Subdomain & Integration Token Credential ID (workspace --> channel --> drop-down --> integrations --> Add an App --> Jenkins CI --> Click on Install/View --> Configuration --> Add to Slack --> Select Channel #team-devops --> Store Team subdomain & Integration Token Credential ID which can be used later on)
