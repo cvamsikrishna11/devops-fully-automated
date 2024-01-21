@@ -109,18 +109,6 @@
 
 4)  #### Tools configuration:
     - Click on Manage Jenkins --> Tools
-
-        **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> 
-        
-        **Note:** By default the **Install Oracle Java SE Development Kit from the website** make sure to close that option by clicking on the image as shown below.
-
-        ![JDKSetup!](https://github.com/cvamsikrishna11/devops-fully-automated/blob/main/jdk_setup.png)
-
-        * Click on Add installer
-        * Select Extract *.zip/*.tar.gz --> Fill the below values
-        * Name: **localJdk**
-        * Download URL for binary archive: **https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz**
-        * Subdirectory of extracted archive: **jdk-11.0.1**
     - **Maven** --> Add Maven --> Make sure **Install automatically** is enabled --> Install from Apache --> Fill the below values
         * Name: **localMaven**
         * Version: Keep the default version as it is 
