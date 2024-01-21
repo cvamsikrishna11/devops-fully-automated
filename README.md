@@ -172,7 +172,7 @@
         3)  - Click on Manage Jenkins --> System
             - Go to section Slack
             - Use new team subdomain & integration token credentials created in the above slack joining step
-            - Workspace: **devopsfullyau-r0x2686** (created in the jenkins and slack integration step earlier)
+            - Workspace: devopsfullyau-r0x2686 (created in the jenkins and slack integration step earlier)
             - Credentials: select the slack-token credentials (created above) 
             - Default channel / member id: #general
             - Click on Save  
