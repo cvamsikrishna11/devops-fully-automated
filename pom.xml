@@ -29,11 +29,11 @@
     </site>
     <snapshotRepository>
             <id>nexus</id>
-            <url>http://3.87.141.1:8081/repository/maven-snapshots/</url>          <!--Replace the Nexus Private IP in this line-->172.31.89.151
+            <url>http://172.31.89.151:8081/repository/maven-snapshots/</url>          <!--Replace the Nexus Private IP in this line-->172.31.89.151
         </snapshotRepository>
         <repository>
             <id>nexus</id>
-            <url>http://3.87.141.1:8081/repository/maven-releases/</url>           <!--Replace the Nexus Private IP in this line-->
+            <url>http://172.31.89.151:8081/repository/maven-releases/</url>           <!--Replace the Nexus Private IP in this line-->
         </repository>
   </distributionManagement>
 
