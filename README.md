@@ -150,6 +150,7 @@
         4)  ###### Slack secret token (slack-token)
             - Kind: Secret text            
             - Secret: Place the Integration Token Credential ID (Note: Generate for slack setup)
+            - Token: HQybimSlImgkuJbc2YnQhuwI
             - ID: slack-token
             - Description: slack-token
             - Click on Create                 
@@ -171,7 +172,7 @@
         3)  - Click on Manage Jenkins --> Configure System
             - Go to section Slack
             - Use new team subdomain & integration token credentials created in the above slack joining step
-            - Workspace: **Replace with Team Subdomain value** (created above)
+            - Workspace: **devopsfullyau-r0x2686** (created in the jenkins and slack integration step earlier)
             - Credentials: select the slack-token credentials (created above) 
             - Default channel / member id: #general
             - Click on Save  
