@@ -38,13 +38,13 @@
     - Launch Instance
 
 5) ###### EC2 (Dev/Stage/Prod)
-    - Create 6 **Amazon Linux 2** VM instances
+    - Create 3 **Amazon Linux 2** VM instances
     - Instance type: t2.micro
     - Security Group (Open): 8080, 9100 and 22 to 0.0.0.0/0
     - Key pair: Select or create a new keypair
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/deployment-servers-setup.sh
     - Launch Instance
-    - After launching this Jenkins servers, attach a tag as **Key=Environment, value=dev/stage/prod** ( out of 6, each 2 instances could be tagges as one env)
+    - After launching this Jenkins servers, attach a tag as **Key=Environment, value=dev/stage/prod** ( out of 3, each 1 instances could be tagges as one env)
 
 6) ###### Prometheus
     - Create Amazon Linux 2 VM instance and call it "Prometheus"
@@ -62,8 +62,8 @@
     - Key pair: Select or create a new keypair
     - User data (Copy the following user data): https://github.com/cvamsikrishna11/devops-fully-automated/blob/installations/grafana-setup.sh
     - Launch Instance
-
-8) ###### Slack 
+  
+8) ###### Slack workspace invite and configuring the token
     - **Join the slack channel https://join.slack.com/t/devopsfullyau-r0x2686/shared_invite/zt-1nzxt7e9z-ChDASWBOysUpa3tH5gi95A**
     - **Join into the channel "#team-devops"**
     - Generate Team Subdomain & Integration Token Credential ID (workspace --> channel --> drop-down --> integrations --> Add an App --> Jenkins CI --> Click on Install/View --> Configuration --> Add to Slack --> Select Channel #team-devops --> Store Team subdomain & Integration Token Credential ID which can be used later on)
@@ -109,18 +109,7 @@
 
 4)  #### Tools configuration:
     - Click on Manage Jenkins --> Tools
-
-        **JDK** --> Add JDK --> Make sure **Install automatically** is enabled --> 
-        
-        **Note:** By default the **Install Oracle Java SE Development Kit from the website** make sure to close that option by clicking on the image as shown below.
-
-        ![JDKSetup!](https://github.com/dfonka/devops-fully-automated.git/blob/main/jdk_setup.png)
-
-        * Click on Add installer
-        * Select Extract *.zip/*.tar.gz --> Fill the below values
-        * Name: **localJdk**
-        * Download URL for binary archive: **https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz**
-        * Subdirectory of extracted archive: **jdk-11.0.1**
+ main
     - **Maven** --> Add Maven --> Make sure **Install automatically** is enabled --> Install from Apache --> Fill the below values
         * Name: **localMaven**
         * Version: Keep the default version as it is 
@@ -162,6 +151,7 @@
         4)  ###### Slack secret token (slack-token)
             - Kind: Secret text            
             - Secret: Place the Integration Token Credential ID (Note: Generate for slack setup)
+            - Token: HQybimSlImgkuJbc2YnQhuwI
             - ID: slack-token
             - Description: slack-token
             - Click on Create                 
@@ -175,15 +165,15 @@
             - Server URL: http://REPLACE-WITH-SONARQUBE-SERVER-PRIVATE-IP:9000          (replace SonarQube privat IP here)
             - Click on Save
 
-        2)  - Click on Manage Jenkins --> Configure System
+        2)  - Click on Manage Jenkins --> System
             - Go to section Prometheus
             - Collecting metrics period in seconds: **15**
             - Click on Save
 
-        3)  - Click on Manage Jenkins --> Configure System
+        3)  - Click on Manage Jenkins --> System
             - Go to section Slack
             - Use new team subdomain & integration token credentials created in the above slack joining step
-            - Workspace: **Replace with Team Subdomain value** (created above)
+            - Workspace: devopsfullyau-r0x2686 (created in the jenkins and slack integration step earlier)
             - Credentials: select the slack-token credentials (created above) 
             - Default channel / member id: #general
             - Click on Save  
@@ -333,5 +323,7 @@ Once both the above steps are done click on Save.
 
 
 ## Finally observe the whole flow and understand the integrations :) 
+    By Access the dev/stage or prod servers in a seperate tab replace-public-ip:8080/webapp
 # Happy learning, everyone! 😊 😊
-CHEERS DERICK FOZONG FONKA
+
+Cheers! Vamsi Chunnduru
