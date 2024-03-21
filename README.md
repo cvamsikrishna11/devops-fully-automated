@@ -64,7 +64,7 @@
     - Launch Instance
   
 8) ###### Slack workspace invite and configuring the token
-    - **Join the slack channel [https://join.slack.com/t/devopsfullyau-r0x2686/shared_invite/zt-1nzxt7e9z-ChDASWBOysUpa3tH5gi95A](https://join.slack.com/t/devopsfullyau-r0x2686/shared_invite/zt-2am153yr9-361m2fNG6Ye86aS8VWffHQ)**
+    - **Join the slack channel [https://join.slack.com/t/devopsfullyau-r0x2686/shared_invite/zt-2f3yg9d5j-MsoN693CXmRgFQWHXPxbmw](https://join.slack.com/t/devopsfullyau-r0x2686/shared_invite/zt-2f3yg9d5j-MsoN693CXmRgFQWHXPxbmw)**
     - **Join into the channel "#team-devops"**
     - Generate Team Subdomain & Integration Token Credential ID (workspace --> channel --> drop-down --> integrations --> Add an App --> Jenkins CI --> Click on Install/View --> Configuration --> Add to Slack --> Select Channel #team-devops --> Store Team subdomain & Integration Token Credential ID which can be used later on)
 
